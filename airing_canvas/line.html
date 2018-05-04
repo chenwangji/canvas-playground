@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>line</title>
+</head>
+<body>
+  <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto"></canvas>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas')
+      canvas.width = 800
+      canvas.height = 600
+      var context = canvas.getContext('2d')
+
+      // 画一根线段
+      context.beginPath() // 为了让绘制方法不重复绘制
+      context.moveTo(100, 100)
+      context.lineTo(300, 300)
+      context.lineTo(100, 500)
+      context.lineWidth = 5;
+      context.filStyle = '#AA384C'
+      context.fill()
+
+      context.beginPath()
+      context.moveTo(300, 100)
+      context.lineTo(500, 300)
+      context.lineTo(300, 500)
+      context.lineWidth = 5
+      context.strokeStyle = 'red'
+      context.stroke()
+    }
+  </script>
+</body>
+</html>

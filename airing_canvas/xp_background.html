@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>xp</title>
+  <style>
+    body {
+      background-color: blueviolet;
+    }
+    #canvas {
+      border: 1px solid #aaa;
+      display: block;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas">不支持canvas</canvas>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas')
+      canvas.width = 800
+      canvas.height = 600
+      var context = canvas.getContext('2d')
+      context.fillStyle = '#FFF'
+      context.fillRect(0, 0, 800, 600)
+
+      drawPrairie(context)
+      drawSky(context)
+      for (var i = 0; i < 5; i++) {
+        var x0 = 500 * Math.random() + 50
+        var y0 = 200 * Math.random() + 50
+        var c0 = 100 * Math.random() + 50
+        drawCloud(context, x0, y0, c0)
+      }
+    }
+    function drawPrairie(ctx) {
+      ctx.save()
+
+      ctx.beginPath()
+      ctx.moveTo(0, 420)
+      ctx.bezierCurveTo(250, 300, 350, 550, 800, 400)
+      ctx.lineTo(800, 600)
+      ctx.lineTo(0, 600)
+      ctx.closePath()
+
+      var grd = ctx.createLinearGradient(0, 600, 600, 0)
+      grd.addColorStop(0, '#00aa58')
+      grd.addColorStop(0.3, '#63aa7b')
+      grd.addColorStop(0, '#04aa00')
+
+      ctx.fillStyle = grd
+      ctx.fill()
+
+      ctx.restore()
+    }
+
+    function drawSky(ctx) {
+      ctx.save()
+
+      ctx.beginPath()
+      ctx.moveTo(0, 420)
+      ctx.bezierCurveTo(250, 300, 350, 550, 800, 400)
+      ctx.lineTo(800, 0)
+      ctx.lineTo(0, 0)
+      ctx.closePath()
+      
+      var grd = ctx.createRadialGradient(400, 0, 50, 400, 0, 200)
+      grd.addColorStop(0, '#42a9aa')
+      grd.addColorStop(1, '#2491aa')
+      ctx.fillStyle = grd
+      ctx.fill()
+      
+      ctx.restore()
+    }
+
+    /*
+    ctx: context
+    cx: 云朵 x 轴位置
+    cy: 云朵 y 轴位置
+    cw: 云朵宽度
+    */
+    function drawCloud(ctx, cx, cy, cw) {
+      ctx.save()
+      
+      // 云的高度
+      var ch = cw * 0.6
+
+      ctx.beginPath()
+      // 创建5个不同位置的圆组成云的形状
+      ctx.arc(cx, cy, cw * 0.19, 0, Math.PI * 2)
+      ctx.arc(cx + cw * 0.08, cy - ch * 0.3, cw * 0.11, 0, Math.PI * 2)
+      ctx.arc(cx + cw * 0.3, cy - ch * 0.25, cw * 0.25, 0, Math.PI * 2)
+      ctx.arc(cx + cw * 0.6, cy, cw * 0.21, 0, Math.PI * 2)
+      ctx.arc(cx + cw * 0.3, cy - ch * 0.1, cw * 0.28, 0, Math.PI * 2)
+      
+      var grd = ctx.createLinearGradient(0, 0, 0, cy)
+      grd.addColorStop(0, 'rgba(255, 255, 255, 0.8)')
+      grd.addColorStop(1, 'rgba(255, 255, 255, 0.5)')
+      ctx.fillStyle = grd
+      ctx.fill()
+
+      ctx.restore()
+    }
+  </script>
+</body>
+</html>

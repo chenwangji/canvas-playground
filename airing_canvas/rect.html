@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>rect</title>
+</head>
+<body>
+  <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto"></canvas>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas')
+      canvas.width = 900
+      canvas.height = 600
+      var context = canvas.getContext('2d')
+      drawRect(context, 100, 100, 200, 200, 'red', 'black', 3)
+      drawRect(context, 350, 100, 200, 200, 'green', 'black', 3)
+      drawRect(context, 600, 100, 200, 200, 'blue', 'black', 3)
+    }
+    function drawRect(ctx, x, y, width, height, bgColor, strokeStyle, strokeWidth) {
+      ctx.beginPath()
+      ctx.rect(x, y, width, height)
+      ctx.fillStyle = bgColor
+      ctx.strokeStyle = strokeStyle
+      ctx.lineWidth = strokeWidth
+      ctx.fill()
+      ctx.stroke()
+      ctx.closePath()
+    }
+  </script>
+</body>
+</html>
