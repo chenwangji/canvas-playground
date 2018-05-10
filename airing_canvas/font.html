@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>font</title>
+  <style>
+    body {
+      background: #000;
+    }
+    #canvas {
+      border: 1px solid #aaa;
+      display: block;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas')
+      canvas.width = 800
+      canvas.height = 600
+
+      var context = canvas.getContext('2d')
+
+      context.fillStyle = '#fff'
+      context.fillRect(0, 0, 800, 600)
+
+      context.font = '50px serif'
+      context.fillStyle = '#0aa'
+      
+      context.fillText('chenwangji.github.io', 50, 100)
+
+      context.font = '50px serif'
+      context.fillStyle = '#00a'
+      context.fillText('chenwangji.github.io', 50, 200)
+
+      context.font = '50px Times New Roman'
+      const grd = context.createLinearGradient(0, 0, 600, 0)
+      grd.addColorStop('0', 'green')
+      grd.addColorStop('1', 'blue')
+      context.strokeStyle = grd
+      context.strokeText('chenwangji.github.io', 50, 300)
+      context.strokeText('chenwangji.github.io', 50, 400, 300)
+    }
+  </script>
+</body>
+</html>

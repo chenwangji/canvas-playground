@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scale</title>
+  <style>
+    body {
+      background: #000;
+    }
+    #canvas {
+      border: 1px solid #aaa;
+      display: block;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas')
+      canvas.width = 800
+      canvas.height = 600
+
+      var context = canvas.getContext('2d')
+
+      context.fillStyle = '#fff'
+      context.fillRect(0, 0, 800, 600)
+
+      context.strokeStyle = '#f00'
+      context.lineWidth = 5
+
+      for (var i = 1; i < 4; i++) {
+        context.save()
+        context.scale(i, i)
+        context.strokeRect(50, 50, 150, 100)
+        context.restore()
+      }
+    }
+  </script>
+</body>
+</html>

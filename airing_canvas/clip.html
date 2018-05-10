@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>clip</title>
+  <style>
+    body {
+      background: #000;
+    }
+    #canvas {
+      border: 1px solid #aaa;
+      display: block;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas')
+      canvas.width = 800
+      canvas.height = 600
+
+      var context = canvas.getContext('2d')
+
+      context.fillStyle = '#fff'
+      context.fillRect(0, 0, 800, 600)
+      
+      context.fillStyle = '#000'
+      context.fillRect(10, 10, 200, 200)
+      context.save()
+
+      // 裁剪画布从（0， 0）点到（50， 50）的正方形
+      context.beginPath()
+      context.rect(0, 0, 50, 50)
+      context.clip()
+
+      context.beginPath()
+      context.strokeStyle = 'red'
+      context.lineWidth = 5
+      context.arc(100, 100, 100, 0, Math.PI * 2)
+      context.stroke()
+
+      context.restore() 
+
+      context.save()
+      context.beginPath()
+      context.rect(0, 0, 500, 500)
+      context.clip()
+
+      context.beginPath()
+      context.strokeStyle = '#00f'
+      context.arc(100, 100, 50, 0, Math.PI * 2)
+      context.stroke()
+      context.restore()
+    }
+  </script>
+</body>
+</html>

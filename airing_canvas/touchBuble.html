@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>touchBuble</title>
+  <style>
+    #canvas {
+      display: block;
+      margin: 50px auto;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas">浏览器不支持canvas</canvas>
+  <script>
+    const balls = []
+    const canvas = document.getElementById('canvas')
+    const context = canvas.getContext('2d')
+
+    window.onload = function() {
+      canvas.width = 800
+      canvas.height = 600
+
+      for (var i = 0; i < 50; i++) {
+        var aBall = {
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 50 + 20
+        }
+        balls[i] = aBall
+      }
+      draw()
+      canvas.addEventListener('mousemove', detect)
+    }
+
+    function draw() {
+      for (var i = 0; i < balls.length; i++) {
+        context.beginPath()
+        context.arc(balls[i].x, balls[i].y, balls[i].r, 0, Math.PI * 2)
+        context.globalAlpha = 0.5
+        
+        const R = getRandomColorValue()
+        const G = getRandomColorValue()
+        const B = getRandomColorValue()
+
+        context.fillStyle = `rgb(${R}, ${G}, ${B})`
+        context.fill()
+      }
+    }
+
+    function detect(e) {
+      const x = e.clientX - canvas.getBoundingClientRect().left
+      const y = e.clientY - canvas.getBoundingClientRect().top
+
+      for (var i = 0; i < balls.length; i++) {
+        context.beginPath()
+        context.arc(balls[i].x, balls[i].y, balls[i].r, 0, Math.PI * 2)
+        if (context.isPointInPath(x, y)) {
+          context.fillStyle = 'rgba(255, 255, 255, 0.1)'
+          context.fill()
+        }
+      }
+    }
+
+    function getRandomColorValue() {
+      return Math.floor(Math.random() * 255)
+    }
+  </script>
+</body>
+</html>

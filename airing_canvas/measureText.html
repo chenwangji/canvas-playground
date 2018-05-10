@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>measureText</title>
+  <style>
+    body {
+      background: #000;
+    }
+    #canvas {
+      border: 1px solid #aaa;
+      display: block;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    window.onload = function() {
+      var canvas = document.getElementById('canvas')
+      canvas.width = 800
+      canvas.height = 600
+
+      var context = canvas.getContext('2d')
+
+      context.fillStyle = '#fff'
+      context.fillRect(0, 0, 800, 600)
+
+      context.strokeStyle = 'blue'
+      context.moveTo(0, 300)
+      context.lineTo(800, 300)
+      context.stroke()
+
+      context.fillStyle = '#0aa'
+      context.font = '20px Arial'
+
+      context.textAlign = 'center'
+      context.textBaseline = 'middle'
+
+      const txt = 'Hello Canvas'
+      context.fillText(txt, 400, 250)
+      const textMetrics = context.measureText(txt)
+      console.log(textMetrics)
+      context.fillText(`width: ${textMetrics.width}`, 400, 350)
+    }
+  </script>
+</body>
+</html>
