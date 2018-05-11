@@ -5,7 +5,7 @@
 - [绘制圆弧](./notes/arc.md)
 - [渐变](./notes/gradient.md)
 - [createPattern 填充样式--类似背景](./notes/createPattern.md)
-- [图形变换](./notes/save_restore.md)
+- [图形变换](./notes/transform.md)
 - [save() 和 restore()](./notes/save_restore.md)
 - [文本 font](./notes/font.md)
 - [绘制图像 drawImage()](./notes/drawImage.md)

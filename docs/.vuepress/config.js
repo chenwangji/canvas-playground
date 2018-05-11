@@ -1,5 +1,5 @@
 module.exports = {
-  dest: 'canvas-notes',
+  dest: 'dist',
   title: 'canvas-notes',
   base: '/canvas-playground/',
   description: 'Learning HTML5 canvas',
@@ -11,7 +11,7 @@ module.exports = {
   ],
   serviceWorker: true,
   themeConfig: {
-    repo: 'chenwangji/canvas-playground',
+    repo: 'https://github.com/chenwangji/canvas-playground',
     editLinks: false,
     docsDir: 'docs',
     nav: [
