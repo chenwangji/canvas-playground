@@ -21,7 +21,7 @@ module.exports = {
       },
       {
         text: '示例',
-        link: 'https://chenwangji.github.io/canvas-playground/'
+        link: 'https://chenwangji.github.io/canvas-demo/'
       }
     ],
     sidebar: false
