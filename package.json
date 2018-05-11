@@ -1,0 +1,27 @@
+{
+  "name": "canvas-playground",
+  "version": "1.0.0",
+  "description": "canvas notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenwangji/canvas-playground.git"
+  },
+  "keywords": [
+    "canvas"
+  ],
+  "author": "chenwangji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chenwangji/canvas-playground/issues"
+  },
+  "homepage": "https://github.com/chenwangji/canvas-playground#readme",
+  "devDependencies": {
+    "vuepress": "^0.8.4"
+  }
+}
