@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>canvas-notes | clip()</title>
+    <meta name="description" content="Learning HTML5 canvas">
+    <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/canvas-playground/assets/css/16.styles.77dfd4df.css" as="style"><link rel="preload" href="/canvas-playground/assets/js/app.f3b243ed.js" as="script"><link rel="preload" href="/canvas-playground/assets/js/11.5b798750.js" as="script"><link rel="prefetch" href="/canvas-playground/assets/js/9.c5e7ae68.js"><link rel="prefetch" href="/canvas-playground/assets/js/1.1e304ca7.js"><link rel="prefetch" href="/canvas-playground/assets/js/2.f1ba10de.js"><link rel="prefetch" href="/canvas-playground/assets/js/3.0a04b451.js"><link rel="prefetch" href="/canvas-playground/assets/js/4.84f5f233.js"><link rel="prefetch" href="/canvas-playground/assets/js/5.3fca793c.js"><link rel="prefetch" href="/canvas-playground/assets/js/6.5ad8dad3.js"><link rel="prefetch" href="/canvas-playground/assets/js/7.627449a8.js"><link rel="prefetch" href="/canvas-playground/assets/js/8.963a2224.js"><link rel="prefetch" href="/canvas-playground/assets/js/0.a9aaf172.js"><link rel="prefetch" href="/canvas-playground/assets/js/10.b3329dd3.js"><link rel="prefetch" href="/canvas-playground/assets/js/12.44681285.js"><link rel="prefetch" href="/canvas-playground/assets/js/13.9b38d8e1.js"><link rel="prefetch" href="/canvas-playground/assets/js/14.e36eda92.js"><link rel="prefetch" href="/canvas-playground/assets/js/15.031185e5.js">
+    <link rel="stylesheet" href="/canvas-playground/assets/css/16.styles.77dfd4df.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/canvas-playground/" class="home-link router-link-active"><!----><span class="site-name">
+      canvas-notes
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/canvas-playground/" class="nav-link">笔记</a></div><div class="nav-item"><a href="https://chenwangji.github.io/canvas-playground/" target="_blank" rel="noopener noreferrer" class="nav-link">示例</a></div><a href="https://github.com/chenwangji/canvas-playground" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/canvas-playground/" class="nav-link">笔记</a></div><div class="nav-item"><a href="https://chenwangji.github.io/canvas-playground/" target="_blank" rel="noopener noreferrer" class="nav-link">示例</a></div><a href="https://github.com/chenwangji/canvas-playground" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav><!----></div><div class="page"><div class="content"><h3 id="clip"><a href="#clip" aria-hidden="true" class="header-anchor">#</a> clip()</h3><p>裁剪区域。</p><p>Canvas API的图像裁剪功能是指，在画布内使用路径，只绘制该路径内所包含区域的图像，不会只路径外的图像。这有点像Flash中的图层遮罩。</p><p>使用图形上下文的不带参数的 <code>clip()</code> 方法来实现 Canvas 的图像裁剪功能。该方法使用路径来对  Canvas话 不设置一个裁剪区域。因此，必须先创建好路径。创建完整后，调用 <code>clip()</code> 方法来设置裁剪区域。</p><p>需要注意的是裁剪是对画布进行的，裁切后的画布不能恢复到原来的大小，也就是说画布是越切越小的，要想保证最后仍然能在 canvas 最初定义的大小下绘图需要注意 <code>save()</code> 和 <code>restore()</code>。画布是先裁切完了再进行绘图。并不一定非要是图片，路径也可以放进去。</p></div><!----><!----></div></div></div>
+    <script src="/canvas-playground/assets/js/11.5b798750.js" defer></script><script src="/canvas-playground/assets/js/app.f3b243ed.js" defer></script>
+  </body>
+</html>
