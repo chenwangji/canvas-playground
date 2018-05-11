@@ -1,7 +1,7 @@
 ## 笔记如下
 
 - [line](./line.md)
-- [beginPath() 和 closePath()](./beginPath() 和 closePath().md)
+- [beginPath() 和 closePath()](./beginPath_closePath.md)
 - [rect](./rect.md)
 - [绘制圆弧](./arc.md)
 - [渐变](./gradient.md)
